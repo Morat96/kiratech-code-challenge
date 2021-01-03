@@ -1,7 +1,7 @@
 Vagrant.configure('2') do |config|
   config.vagrant.plugins = ["vagrant-hostsupdater", "vagrant-disksize"]
-  config.vm.box = 'centos/7'
-  config.disksize.size = '50GB'
+  config.vm.box = 'centos/8'
+  config.disksize.size = '51GB'
   config.vm.provision "shell" do |s|
       ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
       s.inline = <<-SHELL
