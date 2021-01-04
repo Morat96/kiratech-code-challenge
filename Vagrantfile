@@ -1,7 +1,6 @@
 require_relative './scripts/key_authorization'
 
 Vagrant.configure('2') do |config|
-  config.vagrant.plugins = ["vagrant-hostsupdater", "vagrant-disksize", "vagrant-serverspec"]
   config.vm.box = 'centos/8'
   config.disksize.size = '51GB'
   authorize_key_for_root config, '~/.ssh/id_dsa.pub', '~/.ssh/id_rsa.pub'
