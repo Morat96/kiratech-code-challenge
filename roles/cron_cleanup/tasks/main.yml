@@ -1,0 +1,10 @@
+---
+- name: Docker disk clean up
+  cron:
+    name: "Docker disk clean up"
+    job: "docker system prune -af > /dev/null 2>&1"
+    weekday: "0"
+    hour: "0"
+    minute: "0"
+    cron_file: "docker-disk-clean-up"
+    user: root
