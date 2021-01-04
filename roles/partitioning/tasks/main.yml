@@ -19,6 +19,6 @@
 - name: Mount Docker partition
   ansible.posix.mount:
     src: /dev/sda2
-    path: /mnt/docker
+    path: /var/lib/docker
     state: mounted
     fstype: ext4
