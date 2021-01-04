@@ -11,4 +11,5 @@ jobs:
       - uses: actions/setup-python@v1
       - run: pip install ansible-lint
       - run: ansible-lint --version
-      - run: ansible-lint .
+      # Excluding reused role
+      - run: ansible-lint --exclude=./roles/haxorof.docker_ce
