@@ -3,3 +3,8 @@
   become: yes
   roles:
     - partitioning
+    - haxorof.docker_ce
+    - cron_cleanup
+  vars:
+    docker_compose: true
+    docker_users: ['vagrant']
