@@ -1,16 +1,10 @@
+require_relative './scripts/key_authorization'
+
 Vagrant.configure('2') do |config|
   config.vagrant.plugins = ["vagrant-hostsupdater", "vagrant-disksize"]
   config.vm.box = 'centos/8'
   config.disksize.size = '51GB'
-  config.vm.provision "shell" do |s|
-      ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
-      s.inline = <<-SHELL
-        mkdir -p /root/.ssh/
-        touch /root/.ssh/authorized_keys
-        echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
-        echo #{ssh_pub_key} >> /root/.ssh/authorized_keys
-      SHELL
-    end
+  authorize_key_for_root config, '~/.ssh/id_dsa.pub', '~/.ssh/id_rsa.pub'
 
   {
     'vm1'   => '192.168.33.10',
